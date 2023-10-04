@@ -1,7 +1,7 @@
 from tkinter import*
 
 janela = Tk()
-janela.title("Click search button")
+janela.title("Trabalho BMW")
 janela.geometry('250x250')
 
 botao = Button(janela, text="Shows empty list")
