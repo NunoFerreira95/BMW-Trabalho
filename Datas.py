@@ -24,5 +24,26 @@ while quantidade_dias>4:
     quantidade_dias = abs((df - di).days)
     print("A quantidade de dias da reserva é ", quantidade_dias)
 
-print("A reserva foi efetuada")
+h1 =input('Indique a hora inicial da reserva no formato hh:mm')
+h2=input('Indique a hora final da reserva no formato hh:mm')
+
+# Hora final
+hf = datetime.strptime(h2, '%H:%M')
+
+# Hora inicial
+hi = datetime.strptime(h1, '%H:%M')
+
+#Para converter o formato das horas em número decimal - é preciso passar a segundos e dividir por 3600 (60^2)
+numero_horas = (hf - hi).seconds / 3600
+
+if quantidade_dias==0:
+    while numero_horas <1:
+        print("Reseva anulada. O número mínimo de horas é 1 e a sua reserva está com", numero_horas, "horas")
+        h1 =input('Indique a hora inicial da reserva no formato hh:mm')
+        h2=input('Indique a hora final da reserva no formato hh:mm')
+        numero_horas = (datetime.strptime(h2, '%H:%M') - datetime.strptime(h1, '%H:%M')).seconds / 3600
+    print("A reserva foi efetuada e durou ", numero_horas)
+    
+# Quando a reserva não tem 0 dias e não tem mais de 4 dias (está fora do ciclo while)
+print("A reserva foi efetuada e durou", quantidade_dias, "dias e ", numero_horas, "horas")
 
